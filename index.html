@@ -7,7 +7,39 @@
   <title>Library</title>
 </head>
 <body>
-  <button class="add">Add book</button>
+  <div class="container">
+    <button id="showForm">Show the form</button>
+  </div>
+  <div class="formContainer">
+    <form action="" id="form">
+      <label>Title:</label>
+      <input
+        class="title"
+        type="text"
+        class="form-control title"
+        placeholder="Atomic Habits"
+        required />
+      <label>Author:</label>
+      <input
+        class="author"
+        type="text"
+        class="form-control author"
+        placeholder="James Clear" 
+        required />
+      <label>Pages:</label>
+      <input
+        class="pages"
+        type="number" 
+        class="form-control pages"
+        placeholder="170"
+        required />
+      <label>Read Status:</label>
+      <input
+        class="readStatus"
+        type="checkbox"/>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
   <script src="./main.js"></script>
 </body>
 </html>
