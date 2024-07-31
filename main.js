@@ -5,25 +5,25 @@ body.appendChild(library);
 
 const myLibrary = [];
 
-function Book(
-    title,
-    author = "N/A",
-    pages = "N/A",
-    readStatus = false) {
-
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.readStatus = readStatus;
+class Book {
+    author = "N/A";
+    pages = "N/A";
+    readStatus = false;
+    constructor(title, author, pages, readStatus) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.readStatus = readStatus;
+    }
 }
 
 function addBookToLibrary(title, author, pages, readStatus, add=false, index=-1) {
     const library = document.querySelector('div.library');
     let librarySize = 0;
     if (index >= 0) {
-	librarySize = index;
+        librarySize = index;
     } else {
-	librarySize = myLibrary.length;
+        librarySize = myLibrary.length;
     }
 
     const book = document.createElement('div');
@@ -46,7 +46,7 @@ function addBookToLibrary(title, author, pages, readStatus, add=false, index=-1)
     bookReadStatus.setAttribute("class", "readStatus");
     bookReadStatus.textContent = `${readStatus === true ? "Read" : "Unread"}`
 
-    
+
     const readToggle = document.createElement('input');
     readToggle.setAttribute("type", "button");
     readToggle.setAttribute("value", "Toggle Read Status");
@@ -60,8 +60,8 @@ function addBookToLibrary(title, author, pages, readStatus, add=false, index=-1)
     bookDeleteButton.setAttribute("onclick", "removeBookFromLibrary(this.id);reDraw();");
 
     if (add == true) {
-	const newBook = new Book(title, author, pages, readStatus);
-	myLibrary.push(newBook);
+        const newBook = new Book(title, author, pages, readStatus);
+        myLibrary.push(newBook);
     }
 
     book.appendChild(bookTitle);
@@ -103,9 +103,9 @@ function removeBookFromLibrary(id) {
     const pos = id.slice(-1);
     console.log(pos);
     if (pos == 0) {
-	myLibrary.splice(0, 1);
+        myLibrary.splice(0, 1);
     } else {
-	myLibrary.splice(pos, pos);
+        myLibrary.splice(pos, pos);
     }
 }
 
@@ -118,11 +118,11 @@ function reDraw() {
     body.appendChild(library);
 
     for (let i = 0; i < myLibrary.length; ++i) {
-	let b = myLibrary[i];
+        let b = myLibrary[i];
 
-	console.log(b.title, b.author, b.pages, b.readStatus);
+        console.log(b.title, b.author, b.pages, b.readStatus);
 
-	addBookToLibrary(b.title, b.author, b.pages, b.readStatus, false, i);
+        addBookToLibrary(b.title, b.author, b.pages, b.readStatus, false, i);
     }
 }
 
@@ -131,9 +131,9 @@ function toggleReadStatus(id) {
     const readStatus = book.querySelector('div.readStatus');
 
     if (readStatus.textContent == 'Read') {
-	readStatus.textContent = 'Unread';
+        readStatus.textContent = 'Unread';
     } else if (readStatus.textContent == 'Unread') {
-	readStatus.textContent = 'Read';
+        readStatus.textContent = 'Read';
     } 
 }
 
